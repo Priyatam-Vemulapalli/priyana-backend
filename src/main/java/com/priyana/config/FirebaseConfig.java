@@ -1,2 +1,8 @@
-package com.priyana.config;public class FirebaseConfig {
+package com.priyana.config;
+
+
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class FirebaseConfig {
 }

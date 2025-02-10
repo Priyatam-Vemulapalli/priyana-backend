@@ -17,11 +17,8 @@ public class UserTransformer {
     public static User UserRequestToUser(UserRequestBody userRequestBody) {
 
         return User.builder()
-                .userName(userRequestBody.getUserName())
-                .gender(userRequestBody.getGender())
-                .age(userRequestBody.getAge())
-                .emailId(userRequestBody.getEmailId())
-                .password(userRequestBody.getPassword())
+                .username(userRequestBody.getUserName())
+                .email(userRequestBody.getEmailId())
                 .build();
     }
 }

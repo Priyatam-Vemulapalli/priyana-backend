@@ -1,19 +1,32 @@
 package com.priyana.model;
 
+import jakarta.persistence.*;
+import lombok.*;
 
-import jakarta.persistence.Entity;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import java.util.List;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Setter
-@Getter
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "songs")
 public class Song {
-    String songName;
-    String songID;
 
+    @Id
+    private String spotifyId; // Use Spotify ID as primary key
+
+    @Column(nullable = false)
+    private String title;
+
+    @Column(nullable = false)
+    private String artist;
+
+    private String thumbnail; // URL from Spotify API
+
+    @OneToMany(mappedBy = "song", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Rating> ratings;
+
+    @OneToMany(mappedBy = "song", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Discussion> discussions;
 }
