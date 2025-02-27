@@ -6,11 +6,11 @@ import lombok.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
 @Setter
 @Getter
 @Builder
 public class UserLoginBody {
     String loginId;
     String password;
+
 }
