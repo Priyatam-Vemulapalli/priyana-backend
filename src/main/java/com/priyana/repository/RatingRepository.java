@@ -9,4 +9,5 @@ import java.util.UUID;
 
 public interface RatingRepository extends JpaRepository<Rating, UUID> {
     List<Rating> findBySong_SpotifyId(String songId);
+
 }

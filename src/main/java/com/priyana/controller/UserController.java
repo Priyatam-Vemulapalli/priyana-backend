@@ -32,4 +32,10 @@ public class UserController {
         return new ResponseEntity<>(userResponseBody,HttpStatus.OK);
     }
 
+    // finish the endpoint to update the user details.
+    @PostMapping("/update/{id}")
+    private ResponseEntity<UserResponseBody> updateUserDetails(@RequestBody User user, @PathVariable UUID id){
+        return ResponseEntity.ok(null);
+    }
+
 }

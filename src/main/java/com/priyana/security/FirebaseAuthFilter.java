@@ -21,10 +21,8 @@ public class FirebaseAuthFilter extends OncePerRequestFilter {
                                     HttpServletResponse response,
                                     FilterChain filterChain) throws ServletException, IOException {
         String authHeader = request.getHeader("Authorization");
-
         if (authHeader != null && authHeader.startsWith("Bearer ")) {
             String idToken = authHeader.substring(7);
-
             try {
                 FirebaseToken decodedToken = FirebaseAuth.getInstance().verifyIdToken(idToken);
                 User user = new User(decodedToken.getEmail(), "", null);
