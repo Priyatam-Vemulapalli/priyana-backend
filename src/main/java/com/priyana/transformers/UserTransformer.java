@@ -8,16 +8,15 @@ public class UserTransformer {
     public static UserResponseBody UserToUserResponseBody(User user){
 
        return UserResponseBody.builder()
-                .userName(user.getUserName())
-                .emailId(user.getEmailId())
-                .gender(user.getGender())
+                .userName(user.getUsername())
+                .emailId(user.getEmail())
                 .build();
     }
 
     public static User UserRequestToUser(UserRequestBody userRequestBody) {
 
         return User.builder()
-                .username(userRequestBody.getUserName())
+                .Username(userRequestBody.getUserName())
                 .email(userRequestBody.getEmailId())
                 .build();
     }

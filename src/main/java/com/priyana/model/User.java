@@ -1,5 +1,6 @@
 package com.priyana.model;
 
+import com.priyana.ENUM.Gender;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -23,11 +24,16 @@ public class User {
     private String email;
 
     @Column(nullable = false)
-    private String username;
+    private String Username;
+
+    @Column(nullable = false)
+    private Gender gender;
+
+    @Column(nullable = false)
+    private String password;
+
 
 //    private String profilePicture; // URL for DP
-
-    @Column
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Playlist> playlists;

@@ -1,14 +1,28 @@
 package com.priyana.controller;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.priyana.service.SpotifyService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @RestController
-@RequestMapping("/api/song")
+@RequestMapping("/api/songs")
 public class SongController {
 
-    // apis to store and update the ratings or user lists.
+    @Autowired
+    private SpotifyService spotifyService;
+
+    @GetMapping("/search")
+    public Map<String, Object> searchSongs(@RequestParam String query, @RequestParam(defaultValue = "10") int limit) {
+        return spotifyService.searchSongs(query, limit);
+    }
+
+    @GetMapping("/{spotifyId}")
+    public ResponseEntity<Map<String, Object>> getSongDetails(@PathVariable String spotifyId) {
+        Map<String, Object> songDetails = spotifyService.getSongDetails(spotifyId);
+        return ResponseEntity.ok(songDetails);
+    }
 
 }
